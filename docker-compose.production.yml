@@ -16,6 +16,7 @@ services:
     env_file: .env
     volumes:
       - static:/backend_static
+      - media:/media
   frontend:
     env_file: .env
     image: myslin12/kittygram_frontend
@@ -29,3 +30,4 @@ services:
       - 9000:80
     volumes:
       - static:/static
+      - media:/media
