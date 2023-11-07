@@ -1,0 +1,27 @@
+version: '3'
+
+volumes:
+  pg_data_production:
+  static_volume:
+
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - pg_data_production:/var/lib/postgresql/data
+  backend:
+    image: myslin12/kittygram_backend
+    env_file: .env
+  frontend:
+    env_file: .env
+    image: myslin12/kittygram_frontend
+    command: cp -r /app/build/. /static/
+    volumes:
+      - static:/static
+  gateway:
+    image: myslin12/kittygram_gateway
+    env_file: .env
+    ports:
+      - 9000:80
+    volumes:
+      - static:/static
