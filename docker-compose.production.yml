@@ -35,4 +35,4 @@ services:
       - media_volume:/media
     restart: always
     ports:
-      - 9000:80
+      - "${GATEWAY_PORT}:80"
