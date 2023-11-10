@@ -35,5 +35,4 @@ services:
       - media_volume:/media
     restart: always
     ports:
-      env:
-        PORT
+      - 9000:80
